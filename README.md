@@ -23,6 +23,17 @@ when you press Ctrl + C, docker client will proxy the INT signal for you to the 
 
 There is an [issue #7245](https://github.com/docker/docker/issues/7245) describes the problem. If new feature is added, I think we can drop the project then.
 
+Installation
+============
+
+You can install it via
+
+```
+pip install rundocker
+```
+
+Since it only has [one Python script file](https://github.com/victorlin/rundocker/blob/master/rundocker/__main__.py), you can actually copy the script to a file and make it executalbe.
+
 Usage
 =====
 
