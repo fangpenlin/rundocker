@@ -21,3 +21,5 @@ when you press Ctrl + C, docker client will proxy the INT signal for you to the 
 ....
 ```
 
+There is an [issue #7245](https://github.com/docker/docker/issues/7245) describes the problem. If new feature is added, I think we can drop the project then.
+
