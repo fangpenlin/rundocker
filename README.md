@@ -46,6 +46,8 @@ sudo rundocker --rm --name="foobar" eggs/spam
 How it works
 ============
 
-The script looks into `--cidfile` argument, if it is provided, before docker run is executed, it will ensure the container is removed. If `--cidfile` is not provided, it will use `/var/run/<name>.cid`, and pass it to docker run for you.
+The script looks into existing docker containers, if there is a dead container
+with the same name, it will remove it for you. However, if the existing 
+container is still running, and error will be raised.
 
 When the script receives INT signal, it will stop the container.
