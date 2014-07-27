@@ -23,3 +23,18 @@ when you press Ctrl + C, docker client will proxy the INT signal for you to the 
 
 There is an [issue #7245](https://github.com/docker/docker/issues/7245) describes the problem. If new feature is added, I think we can drop the project then.
 
+Usage
+=====
+
+Use rundocker to run docker with a name as you usually do
+
+```
+sudo rundocker --rm --name="foobar" eggs/spam
+```
+
+How it works
+============
+
+The script looks into `--cidfile` argument, if it is provided, before docker run is executed, it will ensure the container is removed. If `--cidfile` is not provided, it will use `/var/run/<name>.cid`, and pass it to docker run for you.
+
+When the script receives INT signal, it will stop the container.
