@@ -46,6 +46,7 @@ def main(args=None):
         subprocess.call(['docker', 'rm', '-f', cid])
         os.remove(cidfile)
 
+    # TODO: handle other signals here?
     logging.info('Executing docker run %s', ' '.join(args))
     try:
         subprocess.check_call(['docker', 'run'] + args)
