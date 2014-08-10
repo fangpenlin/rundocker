@@ -26,6 +26,12 @@ def main(args=None):
     if name is None:
         raise ValueError('You need to specify container name')
 
+    # wehter to force removing container even if it is running
+    force_rm = False
+    if '--force-rm' in args:
+        force_rm = True
+        args.remove('--force-rm')
+
     client = docker.Client()
     containers = client.containers(all=True)
 
@@ -43,7 +49,7 @@ def main(args=None):
         if not status or status.startswith('Exited'):
             logger.info('Remove dead container')
             subprocess.check_call(['docker', 'rm', name])
-        else:
+        elif not force_rm:
             logger.error(
                 'Container with the same name %r is still running',
                 name,
@@ -52,6 +58,9 @@ def main(args=None):
                 'Container name {} conflicts with running one {}'
                 .format(name, target_container['Id']),
             )
+        else:
+            logger.warn('Force removing running container')
+            subprocess.check_call(['docker', 'rm', '-f', name])
     # TODO: handle other signals here?
     logging.info('Executing docker run %s', ' '.join(args))
     try:
