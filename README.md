@@ -44,9 +44,16 @@ sudo rundocker --rm --name="foobar" eggs/spam
 ```
 
 In many cases, containers are not removed correctly even the docker run process
-is already terminated, in that case, you would probably like to add `--force-rm`
+is already terminated. Then when you try to run container with the same name,
+it will keep telling you there is already one container with the same name. 
+This is pretty annoying, and it breaks automatic deployment.
+To address the issue, you would probably like to add `--force-rm`
 argument. It will force to remove existing container with the same name even
-it is running. 
+it is running before rundocker runs the new container. For example:
+
+```
+sudo rundocker --rm --force-rm --name="foobar" eggs/spam
+```
 
 How it works
 ============
