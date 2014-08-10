@@ -43,6 +43,11 @@ Use rundocker to run docker with a name as you usually do
 sudo rundocker --rm --name="foobar" eggs/spam
 ```
 
+In many cases, containers are not removed correctly even the docker run process
+is already terminated, in that case, you would probably like to add `--force-rm`
+argument. It will force to remove existing container with the same name even
+it is running. 
+
 How it works
 ============
 
