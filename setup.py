@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='rundocker',
-    version='1.0.2',
+    version='1.0.3',
     description=(
         'A script for running docker container process without worrying '
         'about dead container issue'
