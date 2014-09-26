@@ -37,7 +37,7 @@ def main(args=None):
 
     target_container = None
     for container in containers:
-        if '/{}'.format(name) in container['Names']:
+        if '/{}'.format(name) in (container['Names'] or ''):
             target_container = container
             break
     if target_container is None:
